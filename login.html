@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accès sécurisé</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+<div class="login-container">
+    <h1>🌍 Projet Animaux du Monde</h1>
+    <p>Veuillez entrer le code transmis :</p>
+
+    <input type="password" id="codeInput" placeholder="Code d'accès">
+    <button onclick="verifierCode()">Valider</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+const CODE_SECRET = "animaux2026";
+
+function verifierCode() {
+    const input = document.getElementById("codeInput").value;
+
+    if (input === CODE_SECRET) {
+        localStorage.setItem("accesAutorise", "true");
+        window.location.href = "index.html";
+    } else {
+        document.getElementById("message").textContent = "Code incorrect.";
+    }
+}
+
+// Validation par la touche Entrée
+document.getElementById("codeInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        verifierCode();
+    }
+});
+</script>
+
+</body>
+</html>

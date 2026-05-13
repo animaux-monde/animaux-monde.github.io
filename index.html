@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Animaux du Monde</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<script>
+if (localStorage.getItem("accesAutorise") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
+
+<!-- NAVIGATION -->
+<nav class="topnav">
+    <span class="topnav-logo">🌍 Animaux du Monde</span>
+    <div class="topnav-links">
+        <button class="nav-btn active" onclick="showSection('accueil', this)">Accueil</button>
+        <button class="nav-btn" onclick="showSection('seances', this)">Séances</button>
+        <button class="nav-btn" onclick="showSection('quiz', this)">Quiz</button>
+        <button class="nav-btn" onclick="showSection('collection', this)">Collection</button>
+    </div>
+    <button class="btn-deconnexion" onclick="deconnexion()">Déconnexion</button>
+</nav>
+
+<!-- ACCUEIL -->
+<section id="accueil">
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Les Animaux du Monde</h1>
+            <p class="hero-subtitle">Un voyage à travers les continents, à la découverte des animaux qui les habitent.</p>
+        </div>
+    </div>
+
+    <div class="accueil-cards">
+        <div class="accueil-card" onclick="showSection('seances', document.querySelector('[data-section=seances]'))">
+            <div class="accueil-card-icon">📖</div>
+            <h3>Séances</h3>
+            <p>Retrouvez toutes les séances réalisées et les animaux découverts.</p>
+        </div>
+        <div class="accueil-card" onclick="showSection('quiz', document.querySelector('[data-section=quiz]'))">
+            <div class="accueil-card-icon">🧠</div>
+            <h3>Quiz</h3>
+            <p>Testez vos connaissances sur les animaux du monde.</p>
+        </div>
+        <div class="accueil-card" onclick="showSection('collection', document.querySelector('[data-section=collection]'))">
+            <div class="accueil-card-icon">🃏</div>
+            <h3>Collection</h3>
+            <p>Consultez toutes vos cartes d'animaux collectionnées.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SÉANCES -->
+<section id="seances" class="hidden inner-section">
+    <h2 class="section-title">Les séances réalisées</h2>
+    <div id="listeSeances"></div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="hidden inner-section">
+    <h2 class="section-title">Quiz</h2>
+    <div id="quizContainer"></div>
+</section>
+
+<!-- COLLECTION -->
+<section id="collection" class="hidden inner-section">
+    <h2 class="section-title">Collection d'animaux</h2>
+    <div id="collectionContainer"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

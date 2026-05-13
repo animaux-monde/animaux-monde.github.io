@@ -1,0 +1,503 @@
+/* ===========================
+   VARIABLES & BASE
+=========================== */
+:root {
+    --vert-fonce: #1a3a2a;
+    --vert-moyen: #2d6a4f;
+    --vert-clair: #52b788;
+    --or: #d4a017;
+    --beige: #fdf6ec;
+    --texte: #1c1c1c;
+    --gris-clair: #f0ede8;
+    --ombre: 0 4px 20px rgba(0,0,0,0.10);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', Arial, sans-serif;
+    background-color: var(--beige);
+    color: var(--texte);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--vert-fonce);
+    padding: 0 32px;
+    height: 62px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+
+.topnav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--or);
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.topnav-links {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.78);
+    font-family: 'Nunito', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.10);
+    color: #fff;
+}
+
+.nav-btn.active {
+    background: var(--vert-clair);
+    color: #fff;
+}
+
+.btn-deconnexion {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.65);
+    font-family: 'Nunito', Arial, sans-serif;
+    font-size: 0.85rem;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.btn-deconnexion:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+}
+
+/* ===========================
+   HERO (ACCUEIL)
+=========================== */
+.hero {
+    position: relative;
+    height: 380px;
+    background-image: url("https://cdn.shopify.com/s/files/1/0657/3100/2634/files/papier-peint-jungle-vibrante-toile-de-fond-de-jungle-tropicale-au-coucher-du-soleil_3142fb0f-b640-4808-83e3-64cd1e9e185e.png?v=1731421381");
+    background-size: cover;
+    background-position: center 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(20,50,30,0.55) 0%, rgba(10,25,15,0.72) 100%);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    margin-bottom: 14px;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.88);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ===========================
+   CARTES ACCUEIL
+=========================== */
+.accueil-cards {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 48px 32px;
+    flex-wrap: wrap;
+}
+
+.accueil-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 36px 28px;
+    width: 210px;
+    text-align: center;
+    box-shadow: var(--ombre);
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    border-top: 4px solid var(--vert-clair);
+}
+
+.accueil-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.13);
+}
+
+.accueil-card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 14px;
+}
+
+.accueil-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--vert-fonce);
+    margin-bottom: 8px;
+}
+
+.accueil-card p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ===========================
+   SECTIONS INTERNES
+=========================== */
+.inner-section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--vert-fonce);
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--vert-clair);
+}
+
+/* Séances */
+.seance-item {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    box-shadow: var(--ombre);
+    overflow: hidden;
+    border-left: 5px solid var(--vert-clair);
+}
+
+.seance-item.seance-locked {
+    border-left-color: #ccc;
+    background: #f5f5f5;
+    opacity: 0.7;
+}
+
+.seance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.seance-header:hover {
+    background: #f9fdf9;
+}
+
+.seance-header-locked {
+    cursor: default;
+}
+
+.seance-header-locked:hover {
+    background: none;
+}
+
+.seance-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.seance-emoji {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.seance-titre {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--vert-fonce);
+    font-weight: 700;
+}
+
+.seance-locked .seance-titre {
+    color: #888;
+}
+
+.seance-meta {
+    font-size: 0.82rem;
+    color: #999;
+    margin-top: 3px;
+}
+
+.seance-arrow {
+    font-size: 0.85rem;
+    color: var(--vert-clair);
+}
+
+.seance-lock {
+    font-size: 1.3rem;
+    opacity: 0.5;
+}
+
+.seance-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s;
+    padding: 0 22px;
+    border-top: 1px solid transparent;
+}
+
+.seance-details.open {
+    max-height: 300px;
+    padding: 16px 22px 20px;
+    border-top: 1px solid #e8f4ee;
+}
+
+.seance-desc {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.seance-info {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.animaux-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.animal-tag {
+    background: var(--gris-clair);
+    border: 1px solid #dde8dd;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    color: var(--vert-fonce);
+    font-weight: 600;
+}
+
+/* Quiz */
+#quizContainer > div {
+    background: #fff;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    box-shadow: var(--ombre);
+}
+
+#quizContainer p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--vert-fonce);
+    margin-bottom: 12px;
+}
+
+#quizContainer input[type="text"] {
+    padding: 9px 14px;
+    border: 1.5px solid #ccc;
+    border-radius: 7px;
+    font-size: 0.95rem;
+    font-family: 'Nunito', Arial, sans-serif;
+    width: 200px;
+    margin-right: 10px;
+    transition: border-color 0.18s;
+}
+
+#quizContainer input[type="text"]:focus {
+    outline: none;
+    border-color: var(--vert-clair);
+}
+
+#quizContainer button {
+    background: var(--vert-moyen);
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 7px;
+    font-family: 'Nunito', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+#quizContainer button:hover {
+    background: var(--vert-fonce);
+}
+
+#quizContainer hr {
+    display: none;
+}
+
+/* Collection */
+#collectionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.carte {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 20px 16px;
+    width: 140px;
+    text-align: center;
+    box-shadow: var(--ombre);
+    transition: transform 0.18s;
+    border-top: 4px solid var(--or);
+}
+
+.carte:hover {
+    transform: translateY(-4px);
+}
+
+.carte h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--vert-fonce);
+    margin-bottom: 6px;
+}
+
+.carte p {
+    font-size: 0.78rem;
+    color: #888;
+}
+
+/* ===========================
+   PAGE LOGIN
+=========================== */
+.login-body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://cdn.shopify.com/s/files/1/0657/3100/2634/files/papier-peint-jungle-vibrante-toile-de-fond-de-jungle-tropicale-au-coucher-du-soleil_3142fb0f-b640-4808-83e3-64cd1e9e185e.png?v=1731421381");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+.login-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.login-container {
+    position: relative;
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+.login-container h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--vert-fonce);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.login-container input,
+.login-container button {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: 'Nunito', Arial, sans-serif;
+    border-radius: 8px;
+}
+
+.login-container input {
+    border: 1.5px solid #ccc;
+    padding: 0 14px;
+    transition: border-color 0.18s;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: var(--vert-clair);
+}
+
+.login-container button {
+    background: var(--vert-moyen);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.login-container button:hover {
+    background: var(--vert-fonce);
+}
+
+#message {
+    color: #c0392b;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
