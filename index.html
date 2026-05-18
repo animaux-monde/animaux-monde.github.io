@@ -17,7 +17,7 @@ if (localStorage.getItem("accesAutorise") !== "true") {
 
 <!-- NAVIGATION -->
 <nav class="topnav">
-    <span class="topnav-logo">🌍 Animaux du Monde</span>
+    <span class="topnav-logo" onclick="showSection('accueil')" style="cursor:pointer;">🌍 Animaux du Monde</span>
     <div class="topnav-links">
         <button class="nav-btn active" onclick="showSection('accueil', this)">Accueil</button>
         <button class="nav-btn" onclick="showSection('seances', this)">Séances</button>
@@ -64,7 +64,8 @@ if (localStorage.getItem("accesAutorise") !== "true") {
 
 <!-- QUIZ -->
 <section id="quiz" class="hidden inner-section">
-    <h2 class="section-title">Quiz</h2>
+    <button class="btn-quiz-retour" id="btnRetourSeances" onclick="retourDepuisQuiz()" style="display:none">← Retour aux séances</button>
+    <h2 class="section-title" id="quizTitre">Quiz</h2>
     <div id="quizContainer"></div>
 </section>
 
@@ -73,6 +74,18 @@ if (localStorage.getItem("accesAutorise") !== "true") {
     <h2 class="section-title">Collection d'animaux</h2>
     <div id="collectionContainer"></div>
 </section>
+
+<!-- MODALE CARTE ANIMAL -->
+<div id="carteModal" class="modal-overlay" onclick="fermerModal(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="fermerModalBtn()">✕</button>
+        <img id="carteModalImg" src="" alt="" class="modal-img">
+        <div class="modal-footer">
+            <span id="carteModalNom" class="modal-nom"></span>
+            <a id="carteModalDl" href="" download class="modal-dl-btn">⬇ Télécharger la carte</a>
+        </div>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
