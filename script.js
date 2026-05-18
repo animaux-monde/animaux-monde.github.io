@@ -14,7 +14,7 @@ const seances = [
         titre: "Animaux de la savane",
         emoji: "🌍",
         theme: "Afrique",
-        date: "20/05/2026",
+        date: "18/05/2026",
         description: "Découverte des animaux de la savane africaine et de leur continent.",
         animaux: ["Lion", "Éléphant", "Girafe"],
         objectif: "Attribuer les animaux de la savane à leur continent (Afrique) sur la carte",
@@ -126,9 +126,41 @@ function showSection(id) {
 
 // QUIZ — chargement dynamique
 
-var quizSeanceIndex = -1; // -1 = quiz général
+var quizSeanceIndex = -1; // -1 = menu de sélection
 
-function chargerQuiz(seanceIndex) {
+function afficherMenuQuiz(container) {
+    seances.forEach(function(seance, index) {
+        var seanceDate = parseDate(seance.date);
+        var unlocked = seanceDate <= today;
+
+        var div = document.createElement("div");
+        div.classList.add("quiz-menu-item");
+        if (!unlocked) div.classList.add("quiz-menu-locked");
+
+        div.innerHTML =
+            '<div class="quiz-menu-left">' +
+                '<span class="quiz-menu-emoji">' + seance.emoji + '</span>' +
+                '<div>' +
+                    '<div class="quiz-menu-titre">' + seance.titre + '</div>' +
+                    '<div class="quiz-menu-meta">' + seance.theme +
+                        (unlocked ? ' · ' + seance.quiz.length + ' questions' : ' · Disponible le ' + seance.date) +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            (unlocked
+                ? '<span class="quiz-menu-arrow">▶</span>'
+                : '<span class="quiz-menu-lock">🔒</span>');
+
+        if (unlocked) {
+            div.style.cursor = "pointer";
+            div.onclick = (function(i) { return function() { chargerQuiz(i); }; })(index);
+        }
+
+        container.appendChild(div);
+    });
+}
+
+function chargerQuiz(seanceIndex, depuisSeance) {
     quizSeanceIndex = seanceIndex;
     const quizContainer = document.getElementById("quizContainer");
     const quizTitre = document.getElementById("quizTitre");
@@ -137,19 +169,17 @@ function chargerQuiz(seanceIndex) {
     quizContainer.innerHTML = "";
 
     if (seanceIndex === -1) {
-        // Quiz général (onglet nav)
+        // Menu de sélection des quiz
         quizTitre.textContent = "Quiz";
         btnRetour.style.display = "none";
-        const questions = [
-            { question: "Quel animal vit dans la savane ?", reponse: "Lion" },
-            { question: "Quel animal donne du lait à la ferme ?", reponse: "Vache" }
-        ];
-        questions.forEach(function(q, i) { afficherQuestion(q, "g" + i, quizContainer); });
+        afficherMenuQuiz(quizContainer);
     } else {
         // Quiz d'une séance
         const seance = seances[seanceIndex];
         quizTitre.textContent = "Quiz — " + seance.emoji + " " + seance.titre;
         btnRetour.style.display = "inline-flex";
+        btnRetour.textContent = depuisSeance ? "← Retour aux séances" : "← Retour aux quiz";
+        btnRetour._depuisSeance = depuisSeance || false;
         seance.quiz.forEach(function(q, i) { afficherQuestion(q, seanceIndex + "_" + i, quizContainer); });
     }
 
@@ -180,16 +210,8 @@ function verifierReponse(id) {
 
     // Récupère la question correspondante
     var q;
-    if (id.startsWith("g")) {
-        var idx = parseInt(id.slice(1));
-        q = [
-            { question: "Quel animal vit dans la savane ?", reponse: "Lion" },
-            { question: "Quel animal donne du lait à la ferme ?", reponse: "Vache" }
-        ][idx];
-    } else {
-        var parts = id.split("_");
-        q = seances[parseInt(parts[0])].quiz[parseInt(parts[1])];
-    }
+    var parts = id.split("_");
+    q = seances[parseInt(parts[0])].quiz[parseInt(parts[1])];
 
     // Accepte reponse (string) ou reponses (tableau)
     var bonnes = q.reponses
@@ -206,7 +228,12 @@ function verifierReponse(id) {
 }
 
 function retourDepuisQuiz() {
-    showSection("seances");
+    const btn = document.getElementById("btnRetourSeances");
+    if (btn._depuisSeance) {
+        showSection("seances");
+    } else {
+        chargerQuiz(-1);
+    }
 }
 
 // Lier le bouton Quiz de la nav au quiz général
@@ -278,7 +305,7 @@ seances.forEach(function(seance, index) {
                 '<div class="animaux-list">' + animauxTags + '</div>' +
             '</div>' +
             '<div class="seance-details-footer" id="footer-' + index + '" style="display:none">' +
-                '<button class="btn-quiz-seance" onclick="chargerQuiz(' + index + ')">🧠 Quiz de cette séance</button>' +
+                '<button class="btn-quiz-seance" onclick="chargerQuiz(' + index + ', true)">🧠 Quiz de cette séance</button>' +
             '</div>';
     }
 
