@@ -1,12 +1,12 @@
 // DONNÉES DU PROJET
 
 const emojisAnimaux = {
-    "Vache": "🐄", "Poule": "🐔", "Cochon": "🐷", "Mouton": "🐑", "Cheval": "🐴",
-    "Lion": "🦁", "Éléphant": "🐘", "Girafe": "🦒", "Zèbre": "🦓", "Rhinocéros": "🦏",
-    "Ours": "🐻", "Cerf": "🦌", "Raton laveur": "🦝", "Puma": "🐆",
-    "Tigre": "🐯", "Panda": "🐼", "Orang-outan": "🦧", "Paon": "🦚",
-    "Ours polaire": "🐻‍❄️", "Manchot": "🐧", "Phoque": "🦭", "Morse": "🐘",
-    "Dauphin": "🐬", "Requin": "🦈", "Baleine": "🐋", "Pieuvre": "🐙", "Tortue": "🐢"
+    "Vache": "🐄", "Poule": "🐔", "Mouton": "🐑",
+    "Lion": "🦁", "Éléphant": "🐘", "Girafe": "🦒",
+    "Ours": "🐻", "Castor": "🦫", "Puma": "🐆",
+    "Tigre": "🐯", "Panda": "🐼", "Paon": "🦚",
+    "Manchot": "🐧", "Phoque": "🦭", "Morse": "🦈",
+    "Dauphin": "🐬", "Baleine": "🐋", "Pieuvre": "🐙",
 };
 
 const seances = [
@@ -14,60 +14,60 @@ const seances = [
         titre: "Animaux de la savane",
         emoji: "🌍",
         theme: "Afrique",
-        date: "25/03/2026",
+        date: "20/05/2026",
         description: "Découverte des animaux de la savane africaine et de leur continent.",
-        animaux: ["Lion", "Éléphant", "Girafe", "Zèbre", "Rhinocéros"],
-        objectif: "Associer le continent à la bonne étiquette",
+        animaux: ["Lion", "Éléphant", "Girafe"],
+        objectif: "Attribuer les animaux de la savane à leur continent (Afrique) sur la carte",
         activite: "Jeu de motricité sur les animaux d'Afrique"
     },
     {
         titre: "Animaux de la forêt",
         emoji: "🌲",
         theme: "Amérique",
-        date: "06/05/2026",
+        date: "27/05/2026",
         description: "Découverte des animaux des forêts américaines.",
-        animaux: ["Ours", "Cerf", "Raton laveur", "Puma"],
-        objectif: "Attribuer les animaux à leur continent",
+        animaux: ["Ours", "Castor", "Puma"],
+        objectif: "Donner la nourriture à l’animal correspondant",
         activite: "Jeu de tri et jeu sportif sur les animaux de la forêt"
-    },
-    {
-        titre: "Animaux de la jungle",
-        emoji: "🌿",
-        theme: "Asie",
-        date: "20/05/2026",
-        description: "Découverte des animaux de la jungle asiatique et de leur habitat.",
-        animaux: ["Tigre", "Panda", "Orang-outan", "Paon"],
-        objectif: "Reconnaître les différents habitats",
-        activite: "Jeu de coopération : associer chaque animal à son habitat"
     },
     {
         titre: "Animaux de la ferme",
         emoji: "🚜",
         theme: "Europe",
-        date: "27/05/2026",
+        date: "03/06/2026",
         description: "Découverte des animaux de la ferme européenne et de leurs produits.",
-        animaux: ["Vache", "Cochon", "Poule", "Mouton", "Cheval"],
-        objectif: "Octroyer la nourriture à l'animal correspondant",
-        activite: "Jeu compétitif : associer chaque animal à sa nourriture/produit"
+        animaux: ["Vache", "Poule", "Mouton"],
+        objectif: "Associer chaque animal de la ferme à sa production (lait, œuf, laine…)",
+        activite: "Memory Géant : associer chaque animal à sa production"
+    },
+    {
+        titre: "Animaux de la jungle",
+        emoji: "🌿",
+        theme: "Asie",
+        date: "10/06/2026",
+        description: "Découverte des animaux de la jungle asiatique et de leur habitat.",
+        animaux: ["Tigre", "Panda", "Paon"],
+        objectif: "Reconnaître les différents habitats",
+        activite: "Débat mouvement : associer l'animal au bon habitat"
     },
     {
         titre: "Animaux des pôles",
         emoji: "🧊",
         theme: "Arctique / Antarctique",
-        date: "03/06/2026",
+        date: "17/06/2026",
         description: "Découverte des animaux vivant dans les régions polaires.",
-        animaux: ["Ours polaire", "Manchot", "Phoque", "Morse"],
-        objectif: "Classer les animaux par lieu de vie",
+        animaux: ["Manchot", "Phoque", "Morse"],
+        objectif: "Classer les animaux polaires par lieu de vie",
         activite: "Jeu d'expression et jeu de mémoire sur les animaux des pôles"
     },
     {
         titre: "Animaux des océans",
         emoji: "🌊",
         theme: "Monde",
-        date: "10/06/2026",
-        description: "Découverte des animaux marins et bilan final du projet.",
-        animaux: ["Dauphin", "Requin", "Baleine", "Pieuvre", "Tortue"],
-        objectif: "Classer les animaux par lieu de vie",
+        date: "24/06/2026",
+        description: "Découverte des animaux marins et bilan final du projet.\nRécupération des cartes !",
+        animaux: ["Dauphin", "Baleine", "Pieuvre"],
+        objectif: "Replacer sur le planisphère l'ensemble des animaux vus",
         activite: "Activité manuelle et tri global de tous les animaux vus"
     }
 ];
