@@ -14,7 +14,7 @@ const seances = [
         titre: "Animaux de la savane",
         emoji: "🌍",
         theme: "Afrique",
-        date: "18/05/2026",
+        date: "20/05/2026",
         description: "Découverte des animaux de la savane africaine et de leur continent.",
         animaux: ["Lion", "Éléphant", "Girafe"],
         objectif: "Attribuer les animaux de la savane à leur continent (Afrique) sur la carte",
